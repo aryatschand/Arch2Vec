@@ -15,7 +15,7 @@ runtimes = []
 renamed_good_programs = []
 
 # Create a directory for storing the source files and executables
-os.makedirs('code_files', exist_ok=True)
+os.makedirs('code_files/A3', exist_ok=True)
 
 for index, row in filtered_data.iterrows():
     solution_id = row['SolutionID']
@@ -26,12 +26,12 @@ for index, row in filtered_data.iterrows():
         code = solution_code_row.iloc[0]['Solutions']
 
         # Save the code to a file
-        code_file = f"code_files/solution_{index}.cpp"
+        code_file = f"code_files/A3/solution_{index}.cpp"
         with open(code_file, 'w') as f:
             f.write(code)
 
         # Compile the code using g++ with -O0
-        executable = f"code_files/solution_{index}.out"
+        executable = f"code_files/A3/solution_{index}.out"
         compile_command = ["g++", "-O0", code_file, "-o", executable]
         try:
             subprocess.run(compile_command, check=True)
